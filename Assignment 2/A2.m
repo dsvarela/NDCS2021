@@ -448,7 +448,8 @@ G2 = [1/16; 0; 0];
 % Gtil = simplify(G0 + alpha1*G1 + alpha2*G2);
 
 %%
-hvec= 0.01:0.01:0.10;
+load goodpts
+hvec= 0.1:0.1:0.1;
 mvec = [linspace(0.02,0.105,10), linspace(0.11,0.01,37)];
 [rows, cols] = find(goodpts==1);
 for j = 1:numel(hvec)
@@ -462,8 +463,8 @@ tvec = linspace(taum,tauM,100);
 
 clear a1vec a2vec
 for i=1:length(tvec)
-    a1vec(i) = alpha1f(h,tvec(i));
-    a2vec(i) = alpha2f(h,tvec(i));
+    a1vec(i) = -5/48*alpha1f(h,tvec(i));
+    a2vec(i) = -1/16*alpha2f(h,tvec(i));
 end
 
 
@@ -486,11 +487,11 @@ plot(a1vec,a2vec,'Color','#EE0000','Linewidth',2); hold on;
 sq = polyshape(alphasq(:,1),alphasq(:,2));
 sqpl = plot(sq); sqpl.FaceAlpha = 0.1; sqpl.EdgeColor= '#00EE00';
 sqpl.FaceColor= '#00EE00'; sqpl.LineWidth = 1.5;
-%hex = polyshape(alphahex(:,1),alphahex(:,2));
-%hexpl = plot(hex); hexpl.EdgeColor= '#0000EE';
-%hexpl.FaceColor= '#0000EE'; hexpl.FaceAlpha = 0.1; hexpl.LineWidth = 1.5;
+hex = polyshape(alphahex(:,1),alphahex(:,2));
+hexpl = plot(hex); hexpl.EdgeColor= '#0000EE';
+hexpl.FaceColor= '#0000EE'; hexpl.FaceAlpha = 0.1; hexpl.LineWidth = 1.5;
 scatter(alphasq(:,1), alphasq(:,2), [], [0,238,0]/256, 'x', 'LineWidth', 2);
-% scatter(alphahex(:,1), alphahex(:,2),[], [0,0,238]/256, 'x', 'LineWidth', 2);
+scatter(alphahex(:,1), alphahex(:,2),[], [0,0,238]/256, 'x', 'LineWidth', 2);
 plot(a1vec,a2vec,'Color','#EE0000','Linewidth',2); hold on;
 grid on; grid minor;
 set(gca, 'Fontsize', 15)
@@ -692,8 +693,6 @@ for l = 1:length(hvec)
         m = mvec(l);
         f = 10;
         alphahex = [alpha1f(h,taum), alpha2f(h,taum);
-            (alpha1f(h,taum)*(1-m/f)+alpha1f(h,tauM)*m/f), alpha2f(h,taum);...
-            alpha1f(h,tauM), (alpha2f(h,taum)*m/f+alpha2f(h,tauM)*(1-m/f));...
             alpha1f(h,tauM), alpha2f(h,tauM);...
             (alpha1f(h,taum)*m+alpha1f(h,tauM)*(1-m)), alpha2f(h,tauM);...
             alpha1f(h,taum), (alpha2f(h,taum)*(1-m)+alpha2f(h,tauM)*m)];
@@ -728,9 +727,7 @@ for l = 1:length(hvec)
             isnegdef = [all((eig(CLtil{1}'*P*CLtil{1} - P)) < 0), ...
                 all((eig(CLtil{2}'*P*CLtil{2} - P)) < 0), ...
                 all((eig(CLtil{3}'*P*CLtil{3} - P)) < 0), ...
-                all((eig(CLtil{4}'*P*CLtil{4} - P)) < 0), ...
-                all((eig(CLtil{5}'*P*CLtil{5} - P)) < 0), ...
-                all((eig(CLtil{6}'*P*CLtil{6} - P)) < 0)];
+                all((eig(CLtil{4}'*P*CLtil{4} - P)) < 0)];
             % Check if solution is just a numerical issue
             if isposdef && all(isnegdef)
                 % Store if everything seeems good
