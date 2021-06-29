@@ -5,37 +5,16 @@ close all
 figure('Position', [10, 50, 1400, 600],'DefaultAxesPosition', [0.1, 0.125, 0.875, 0.775]);
 % figure('Position', [10, 50, 1400, 600])
 
-plot((avgerr0), 'Color', '#6593A6', 'Linewidth', 2); hold on;
-plot((avgerr1), 'Color', '#F29544', 'Linewidth', 2); hold on;
-plot((avgerr20), 'Color', '#A9BF04', 'Linewidth', 2); 
-plot((avgerr100), 'Color', '#D95F69', 'Linewidth', 2);
-% plot((avgerravg),'k--', 'Linewidth', 0.1);
 
-plot((err10),'-.','Color', '#6ABABD', 'Linewidth', 0.1);
-plot((err20),'-.','Color', '#6ABABD', 'Linewidth', 0.1);
-plot((err30),'-.','Color', '#6ABABD', 'Linewidth', 0.1);
-plot((err40),'-.','Color', '#6ABABD', 'Linewidth', 0.1);
-
-plot((err11),'-.','Color', '#F9C139', 'Linewidth', 0.1);
-plot((err21),'-.','Color', '#F9C139', 'Linewidth', 0.1);
-plot((err31),'-.','Color', '#F9C139', 'Linewidth', 0.1);
-plot((err41),'-.','Color', '#F9C139', 'Linewidth', 0.1);
-
-plot((err120),'-.','Color', '#75D606', 'Linewidth', 0.1);
-plot((err220),'-.','Color', '#75D606', 'Linewidth', 0.1);
-plot((err320),'-.','Color', '#75D606', 'Linewidth', 0.1);
-plot((err420),'-.','Color', '#75D606', 'Linewidth', 0.1);
-
-plot((err1100),'-.','Color', '#E67F5A', 'Linewidth', 0.1);
-plot((err2100),'-.','Color', '#E67F5A', 'Linewidth', 0.1);
-plot((err3100),'-.','Color', '#E67F5A', 'Linewidth', 0.1);
-plot((err4100),'-.','Color', '#E67F5A', 'Linewidth', 0.1);
+plot((avgerr1), 'Color', '#D95F69', 'Linewidth', 2);
+plot((err1),'-.','Color', '#6ABABD', 'Linewidth', 0.1);
+plot((err2),'-.','Color', '#F9C139', 'Linewidth', 0.1);
+plot((err3),'-.','Color', '#75D606', 'Linewidth', 0.1);
+plot((err4),'-.','Color', '#E67F5A', 'Linewidth', 0.1);
 % yline((1e-3), 'r--')
 
-plot((avgerr0), 'Color', '#6593A6', 'Linewidth', 2); 
-plot((avgerr1), 'Color', '#F29544', 'Linewidth', 2); 
-plot((avgerr20), 'Color', '#A9BF04', 'Linewidth', 2); 
-plot((avgerr100), 'Color', '#D95F69', 'Linewidth', 2);
+
+plot((avgerr), 'Color', '#D95F69', 'Linewidth', 2);
 % plot((avgerravg),'k--', 'Linewidth', 0.1);
 
 xl = xlabel('$\textbf{Iterations}$', 'Interpreter', 'Latex', 'Fontsize', 20);
